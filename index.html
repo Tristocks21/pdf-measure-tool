@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Measure Tool</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <h1>PDF Measure Tool</h1>
+        <p>Upload a PDF, click two points, and get a real-world distance.</p>
+      </header>
+
+      <section class="controls" aria-label="controls">
+        <label class="file-picker">
+          <span>PDF file</span>
+          <input id="pdfFile" type="file" accept="application/pdf" />
+        </label>
+
+        <label>
+          <span>Page</span>
+          <input id="pageNumber" type="number" min="1" value="1" />
+        </label>
+
+        <label>
+          <span>Zoom</span>
+          <input id="zoomLevel" type="number" min="0.25" max="4" step="0.25" value="1.25" />
+        </label>
+
+        <label>
+          <span>Calibration (meters between two known points)</span>
+          <input id="knownDistance" type="number" min="0" step="0.01" placeholder="e.g. 2.5" />
+        </label>
+
+        <div class="button-row">
+          <button id="renderPage" type="button">Render Page</button>
+          <button id="setCalibration" type="button">Set Calibration from Last Segment</button>
+          <button id="clearPoints" type="button">Clear Points</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="canvas-wrap">
+          <canvas id="pdfCanvas" aria-label="PDF preview"></canvas>
+        </div>
+        <aside class="results" aria-live="polite">
+          <h2>Results</h2>
+          <p id="statusText">Select a PDF to begin.</p>
+          <dl>
+            <div>
+              <dt>Last segment (pixels)</dt>
+              <dd id="pixelDistance">—</dd>
+            </div>
+            <div>
+              <dt>Scale (meters / pixel)</dt>
+              <dd id="scaleValue">—</dd>
+            </div>
+            <div>
+              <dt>Measured distance (meters)</dt>
+              <dd id="meterDistance">—</dd>
+            </div>
+          </dl>
+          <p class="hint">Tip: click exactly two points to measure. Add a calibration first for real units.</p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

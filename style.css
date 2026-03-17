@@ -1,0 +1,150 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --panel: #111827;
+  --panel-border: #374151;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #38bdf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #1f2937 0%, var(--bg) 45%);
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  color: var(--muted);
+  margin: 0.25rem 0 0;
+}
+
+.controls,
+.results,
+.canvas-wrap {
+  background: color-mix(in hsl, var(--panel), black 10%);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+}
+
+.controls {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: end;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+label span {
+  color: var(--muted);
+}
+
+input,
+button {
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  background: #0b1220;
+  color: var(--text);
+  min-height: 38px;
+  padding: 0.5rem 0.6rem;
+}
+
+button {
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+.workspace {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr minmax(220px, 320px);
+}
+
+.canvas-wrap {
+  overflow: auto;
+  padding: 0.75rem;
+  min-height: 70vh;
+}
+
+#pdfCanvas {
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.4);
+  max-width: 100%;
+  cursor: crosshair;
+}
+
+.results {
+  padding: 1rem;
+}
+
+.results h2 {
+  margin-top: 0;
+}
+
+.results dl {
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.results dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.results dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}
